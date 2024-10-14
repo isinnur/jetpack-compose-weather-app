@@ -10,6 +10,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,6 +18,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -117,11 +119,42 @@ fun WeatherScreen() {
                             WeatherDetailItem(icon = R.drawable.humidity, value = "18%" , labelType = "humidity")
                         }
                     }
+                    //Displaying "Today" label
+                    Text(
+                        text = "Today",
+                        fontSize = 20.sp,
+                        color = Color.White,
+                        modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 8.dp)
+                    )
+
                 }
+
+                //Display future hourly forecast using a LazyRow
+                item {
+                    LazyRow(modifier = Modifier.fillMaxWidth(),
+                        contentPadding = PaddingValues(horizontal = 20.dp),
+                        horizontalArrangement = Arrangement.spacedBy(4.dp)
+
+                    ) {
+                        item {
+
+                        }
+                    }
+                }
+
+
+
             }
+
+
         }
     }
 }
+// sample hourly data
+val items = listOf(
+
+)
+
 
 @Composable
 fun WeatherDetailItem(icon:Int, value: String, labelType: String) {
